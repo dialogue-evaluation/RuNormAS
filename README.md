@@ -37,3 +37,6 @@ https://competitions.codalab.org/competitions/29216
 ## Организаторы:
 * Иван Смуров, ABBYY, МФТИ
 * Денис Золотухин, ABBYY, ВШЭ
+
+[**Телеграм-чат соревнования**](https://t.me/RuNormAS)
+
