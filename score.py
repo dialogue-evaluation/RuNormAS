@@ -26,7 +26,12 @@ def generic_score(true_dir, set_dir):
         if not os.path.exists(f"{set_dir}/{name}"):
             return 0.0
 
-        sub_lines = open(f"{set_dir}/{name}", encoding='utf-8').read().strip().split('\n')
+        sub = open(f"{set_dir}/{name}", encoding='utf-8').read().strip()
+
+        sub = re.sub("Ё", "Е", sub)
+        sub = re.sub("ё", "е", sub)
+
+        sub_lines = sub.split('\n')
 
         for gt, sub in zip(gt_lines, sub_lines):
             n += 1
@@ -54,7 +59,12 @@ def named_score(true_dir, set_dir):
         if not os.path.exists(f"{set_dir}/{name}"):
             return 0.0
 
-        sub_lines = open(f"{set_dir}/{name}", encoding='utf-8').read().strip().split('\n')
+        sub = open(f"{set_dir}/{name}", encoding='utf-8').read().strip()
+
+        sub = re.sub("Ё", "Е", sub)
+        sub = re.sub("ё", "е", sub)
+
+        sub_lines = sub.split('\n')
 
         for gt, sub in zip(gt_lines, sub_lines):
             n += 1
