@@ -7,6 +7,13 @@ import re
 generic_size = 536
 named_size = 4370
 
+def regularize(text):
+    text = re.sub("Ё", "Е", text)
+    text = re.sub("ё", "е", text)
+    text = re.sub(" +", " ", text)
+
+    return text
+
 def generic_score(true_dir, set_dir):
     if len(os.listdir(set_dir)) != generic_size:
         return 0.0
@@ -18,8 +25,7 @@ def generic_score(true_dir, set_dir):
     for name in filenames:
         gt = open(f"{true_dir}/generic/{name}", encoding='utf-8').read().strip()
 
-        gt = re.sub("Ё", "Е", gt)
-        gt = re.sub("ё", "е", gt)
+        gt = regularize(gt)
 
         gt_lines = gt.split('\n')
 
@@ -28,8 +34,7 @@ def generic_score(true_dir, set_dir):
 
         sub = open(f"{set_dir}/{name}", encoding='utf-8').read().strip()
 
-        sub = re.sub("Ё", "Е", sub)
-        sub = re.sub("ё", "е", sub)
+        sub = regularize(sub)
 
         sub_lines = sub.split('\n')
 
@@ -51,8 +56,7 @@ def named_score(true_dir, set_dir):
     for name in filenames:
         gt = open(f"{true_dir}/named/{name}", encoding='utf-8').read().strip()
 
-        gt = re.sub("Ё", "Е", gt)
-        gt = re.sub("ё", "е", gt)
+        gt = regularize(gt)
 
         gt_lines = gt.split('\n')
 
@@ -61,8 +65,7 @@ def named_score(true_dir, set_dir):
 
         sub = open(f"{set_dir}/{name}", encoding='utf-8').read().strip()
 
-        sub = re.sub("Ё", "Е", sub)
-        sub = re.sub("ё", "е", sub)
+        sub = regularize(sub)
 
         sub_lines = sub.split('\n')
 
