@@ -26,6 +26,7 @@ def generic_score(true_dir, set_dir):
         gt = open(f"{true_dir}/generic/{name}", encoding='utf-8').read().strip()
 
         gt = regularize(gt)
+        gt = re.sub(" ", "", gt)
 
         gt_lines = gt.split('\n')
 
@@ -35,6 +36,7 @@ def generic_score(true_dir, set_dir):
         sub = open(f"{set_dir}/{name}", encoding='utf-8').read().strip()
 
         sub = regularize(sub)
+        sub = re.sub(" ", "", sub)
 
         sub_lines = sub.split('\n')
 
